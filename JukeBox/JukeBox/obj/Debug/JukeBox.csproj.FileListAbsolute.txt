@@ -1,0 +1,9 @@
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\bin\Debug\JukeBox.exe.config
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\bin\Debug\JukeBox.exe
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\bin\Debug\JukeBox.pdb
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Form1.resources
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Properties.Resources.resources
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.csproj.GenerateResource.Cache
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.csproj.CoreCompileInputs.cache
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.exe
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.pdb
