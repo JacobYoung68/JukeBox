@@ -19,7 +19,8 @@ namespace JukeBox
 
         private void setupToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            Setup Setup = new Setup();
+            Setup.ShowDialog();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)

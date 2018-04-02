@@ -9,3 +9,4 @@ C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.pdb
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.csprojResolveAssemblyReference.cache
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Main.resources
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.About.resources
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Setup.resources
