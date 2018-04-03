@@ -36,14 +36,17 @@ namespace JukeBox
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {            
+        {
+            currentGenre = 0;
+            currentTrack = 1;
             readFile();
             update();
         }
 
         private void update()
         {
-            txtGenreTitle.Text = genre[currentGenre,2];
+            txtGenreTitle.Text = genre[currentGenre,0];
+            txtCurrentTrack.Text = genre[currentGenre, currentTrack];
             
         }
 
@@ -54,11 +57,11 @@ namespace JukeBox
             
             while (genreNumber != 0)
             {
-                int countTrack = 2;
+                int countTrack = 1;
                 int trackNumber = Convert.ToInt32(sr.ReadLine());
+                genre[countGenre, 0] = sr.ReadLine();
                 while (trackNumber != 0)
-                {
-                    genre[countGenre, 1] = sr.ReadLine();
+                {                    
                     genre[countGenre,countTrack] = sr.ReadLine();
                     countTrack++;
                     trackNumber--;
