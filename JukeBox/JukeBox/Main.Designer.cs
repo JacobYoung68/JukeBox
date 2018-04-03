@@ -68,6 +68,7 @@
             this.lbxGenreList.Name = "lbxGenreList";
             this.lbxGenreList.Size = new System.Drawing.Size(120, 95);
             this.lbxGenreList.TabIndex = 2;
+            this.lbxGenreList.DoubleClick += new System.EventHandler(this.lbxGenreList_DoubleClick);
             // 
             // txtCurrentTrack
             // 

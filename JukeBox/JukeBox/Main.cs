@@ -13,10 +13,11 @@ namespace JukeBox
 {
     public partial class Main : Form
     {
-        string[,] genre = new string[10,10];
-        int currentGenre;
-        int currentTrack;
-        StreamReader sr = new StreamReader("../../Media.txt");
+                                                                //Declare variables to store:
+        string[,] genre = new string[10,10];                    //Genre name, number of tracks, track name
+        int currentGenre;                                       //Current genre selected
+        int currentTrack;                                       //Current Track Playing    
+        StreamReader sr = new StreamReader("../../Media.txt");  //Enable reading from files
 
         public Main()
         {
@@ -25,12 +26,14 @@ namespace JukeBox
 
         private void setupToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Open the Setup form
             Setup Setup = new Setup();
             Setup.ShowDialog();
         }
 
         private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            //Open the About form
             About About = new About();
             About.ShowDialog();
         }
@@ -78,6 +81,18 @@ namespace JukeBox
                 }
                 countGenre++;
                 genreNumber--;
+            }
+        }
+
+        private void lbxGenreList_DoubleClick(object sender, EventArgs e)
+        {
+            if (lbxGenreList.SelectedItem != null)
+            {
+                lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
+                if (lbxPlayList.Items.Count == 0)
+                {
+                    // play stuff
+                }
             }
         }
     }
