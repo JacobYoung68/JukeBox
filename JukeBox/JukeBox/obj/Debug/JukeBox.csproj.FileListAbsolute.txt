@@ -10,3 +10,8 @@ C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.csproj
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Main.resources
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.About.resources
 C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.Setup.resources
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\bin\Debug\Interop.WMPLib.dll
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\bin\Debug\AxInterop.WMPLib.dll
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\Interop.WMPLib.dll
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\AxInterop.WMPLib.dll
+C:\Users\68jac\Documents\GitHub\Jukebox\JukeBox\JukeBox\obj\Debug\JukeBox.csproj.ResolveComReference.cache

@@ -13,9 +13,10 @@ namespace JukeBox
 {
     public partial class Main : Form
     {
-        string[,] genre = new string[10,3];
+        string[,] genre = new string[10,10];
         int currentGenre;
         int currentTrack;
+        StreamReader sr = new StreamReader("../../Media.txt");
 
         public Main()
         {
@@ -35,14 +36,36 @@ namespace JukeBox
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {
-
+        {            
+            readFile();
+            update();
         }
 
         private void update()
         {
             txtGenreTitle.Text = genre[currentGenre,2];
-            txtCurrentTrack.Text = genre[]
+            
+        }
+
+        private void readFile()
+        {
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+            int countGenre = 0;
+            
+            while (genreNumber != 0)
+            {
+                int countTrack = 2;
+                int trackNumber = Convert.ToInt32(sr.ReadLine());
+                while (trackNumber != 0)
+                {
+                    genre[countGenre, 1] = sr.ReadLine();
+                    genre[countGenre,countTrack] = sr.ReadLine();
+                    countTrack++;
+                    trackNumber--;
+                }
+                countGenre++;
+                genreNumber--;
+            }
         }
     }
 }
