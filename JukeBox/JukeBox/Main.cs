@@ -13,11 +13,18 @@ namespace JukeBox
 {
     public partial class Main : Form
     {
-                                                                //Declare variables to store:
-        string[,] genre = new string[10,10];                    //Genre name, number of tracks, track name
-        int currentGenre;                                       //Current genre selected
-        int currentTrack;                                       //Current Track Playing    
-        StreamReader sr = new StreamReader("../../Media.txt");  //Enable reading from files
+        //Declare variables to store:
+        //Genre name, number of tracks, track name
+        string[,] genre = new string[10,10];
+        
+        //Current genre selected
+        int currentGenre;
+
+        //Current Track Playing  
+        int currentTrack;
+
+        //Enable reading from files
+        StreamReader sr = new StreamReader("../../Media.txt");  
 
         public Main()
         {
@@ -40,9 +47,16 @@ namespace JukeBox
 
         private void Main_Load(object sender, EventArgs e)
         {
+            // set values for current genre and track
+            // genre to 0 so it starts on the first
+            // current track set to 1 because 0 is the name of the genre
             currentGenre = 0;
             currentTrack = 1;
+
+            //first read the file to setup the genre listbox
             readFile();
+
+            // update the information depending on whats been read in the file
             update();
         }
 
@@ -84,14 +98,17 @@ namespace JukeBox
             }
         }
 
+
+
         private void lbxGenreList_DoubleClick(object sender, EventArgs e)
         {
             if (lbxGenreList.SelectedItem != null)
             {
-                lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
+                lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());                
                 if (lbxPlayList.Items.Count == 0)
                 {
-                    // play stuff
+                    // play stuff when there is nothing else in the playlist
+
                 }
             }
         }
