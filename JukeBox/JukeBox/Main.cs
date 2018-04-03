@@ -7,11 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JukeBox
 {
     public partial class Main : Form
     {
+        string[,] genre = new string[10,3];
+        int currentGenre;
+        int currentTrack;
+
         public Main()
         {
             InitializeComponent();
@@ -27,6 +32,17 @@ namespace JukeBox
         {
             About About = new About();
             About.ShowDialog();
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void update()
+        {
+            txtGenreTitle.Text = genre[currentGenre,2];
+            txtCurrentTrack.Text = genre[]
         }
     }
 }
