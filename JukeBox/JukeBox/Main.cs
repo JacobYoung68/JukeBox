@@ -46,8 +46,17 @@ namespace JukeBox
         private void update()
         {
             txtGenreTitle.Text = genre[currentGenre,0];
-            txtCurrentTrack.Text = genre[currentGenre, currentTrack];
-            
+            txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
+            updateGenrelist();
+        }
+
+        private void updateGenrelist()
+        {
+            int max = Convert.ToInt32(genre[currentGenre, 1]);
+            for (int i = 0; i < max; i++)
+            {
+                lbxGenreList.Items.Add(genre[currentGenre, i + 2]);
+            }                
         }
 
         private void readFile()
@@ -57,8 +66,9 @@ namespace JukeBox
             
             while (genreNumber != 0)
             {
-                int countTrack = 1;
+                int countTrack = 2;
                 int trackNumber = Convert.ToInt32(sr.ReadLine());
+                genre[countGenre, 1] = trackNumber.ToString();
                 genre[countGenre, 0] = sr.ReadLine();
                 while (trackNumber != 0)
                 {                    
