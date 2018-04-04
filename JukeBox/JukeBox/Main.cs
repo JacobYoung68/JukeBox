@@ -15,7 +15,10 @@ namespace JukeBox
     {
         //Declare variables to store:
         //Genre name, number of tracks, track name
-        string[,] genre = new string[10,10];
+
+        //string[,] genre = new string[10,10];
+
+        
         
         //Current genre selected
         int currentGenre;
@@ -56,48 +59,55 @@ namespace JukeBox
             //first read the file to setup the genre listbox
             readFile();
 
-            // update the information depending on whats been read in the file
-            update();
+            
         }
 
-        private void update()
+        //private void update()
+        //{
+        //    txtGenreTitle.Text = genre[currentGenre,0];
+        //    lbxGenreList.Items.Clear();
+        //    updateGenrelist();
+        //    //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
+        //
+        //}
+
+        private void update(List<List<string>> genre)
         {
-            txtGenreTitle.Text = genre[currentGenre,0];
+            txtGenreTitle.Text = genre[currentGenre].ToString();
             lbxGenreList.Items.Clear();
-            updateGenrelist();
+            updateGenrelist(genre);
             //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
 
         }
 
-        private void updateGenrelist()
+        private void updateGenrelist(List<List<string>> genre)
         {
-            int max = Convert.ToInt32(genre[currentGenre, 1]);
+            int max = Convert.ToInt32(genre[currentGenre][0]);
             for (int i = 0; i < max; i++)
             {
-                lbxGenreList.Items.Add(genre[currentGenre, i + 2]);
+                lbxGenreList.Items.Add(genre[currentGenre][i + 2]);
             }                
         }
 
         private void readFile()
         {
-            int genreNumber = Convert.ToInt32(sr.ReadLine());
-            int countGenre = 0;
-            
-            while (genreNumber != 0)
+            int genreNumber = Convert.ToInt32(sr.ReadLine());            
+            List<List<string>> genre = new List<List<string>>();
+
+            for (int i = 0; i < genreNumber; i++)
             {
-                int countTrack = 2;
+                List<string> newgenre = new List<string>();
                 int trackNumber = Convert.ToInt32(sr.ReadLine());
-                genre[countGenre, 1] = trackNumber.ToString();
-                genre[countGenre, 0] = sr.ReadLine();
-                while (trackNumber != 0)
-                {                    
-                    genre[countGenre,countTrack] = sr.ReadLine();
-                    countTrack++;
-                    trackNumber--;
+                newgenre.Add((trackNumber.ToString()));
+                newgenre.Add(sr.ReadLine());
+                for (int f = 0; f < trackNumber; f++)                    
+                {
+                    newgenre.Add(sr.ReadLine());                
                 }
-                countGenre++;
-                genreNumber--;
+                genre.Add(newgenre);
             }
+            // update the information depending on whats been read in the file
+            update(genre);
         }
 
 
@@ -114,7 +124,7 @@ namespace JukeBox
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
             }
-             update();
+             readFile();            
         }
     }
 }
