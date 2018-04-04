@@ -114,7 +114,7 @@ namespace JukeBox
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
             }
-            update();
+             update();
         }
     }
 }

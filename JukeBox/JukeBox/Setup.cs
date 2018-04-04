@@ -256,7 +256,17 @@ namespace JukeBox
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Close();
+            // set the variables for the messagebox options 
+            string message = "Are you sure you want to cancel?";
+            string error = "error";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            result = MessageBox.Show(message, error, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }
