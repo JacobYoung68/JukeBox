@@ -63,8 +63,10 @@ namespace JukeBox
         private void update()
         {
             txtGenreTitle.Text = genre[currentGenre,0];
-            txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
+            lbxGenreList.Items.Clear();
             updateGenrelist();
+            //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
+
         }
 
         private void updateGenrelist()
@@ -103,14 +105,16 @@ namespace JukeBox
         private void lbxGenreList_DoubleClick(object sender, EventArgs e)
         {
             if (lbxGenreList.SelectedItem != null)
-            {
-                lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());                
+            {          
                 if (lbxPlayList.Items.Count == 0)
                 {
-                    // play stuff when there is nothing else in the playlist
-
+                    lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());                    
+                } else if (lbxPlayList.Items.Count >= 1)
+                {
+                    lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
             }
+            update();
         }
     }
 }
