@@ -27,7 +27,7 @@ namespace JukeBox
         int currentTrack;
 
         //Enable reading from files
-        StreamReader sr = new StreamReader("../../Media.txt");  
+        
 
         public Main()
         {
@@ -73,7 +73,7 @@ namespace JukeBox
 
         private void update(List<List<string>> genre)
         {
-            txtGenreTitle.Text = genre[currentGenre].ToString();
+            txtGenreTitle.Text = genre[currentGenre][1].ToString();
             lbxGenreList.Items.Clear();
             updateGenrelist(genre);
             //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
@@ -91,6 +91,7 @@ namespace JukeBox
 
         private void readFile()
         {
+            StreamReader sr = new StreamReader("../../Media.txt");
             int genreNumber = Convert.ToInt32(sr.ReadLine());            
             List<List<string>> genre = new List<List<string>>();
 
