@@ -107,16 +107,8 @@ namespace JukeBox
                 if (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text == "")
                 {
                     txtCurrentTrack.Text = lbxGenreList.SelectedItem.ToString();
+                    playTrack();
                     
-                    // combine the filename with the current directory, but up a few folders
-                    // this gives the full path to the current track
-                    string filename = txtCurrentTrack.Text;
-                    string path = Environment.CurrentDirectory;                    
-                    string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
-                    string finalPath = newPath + "Tracks\\" + filename;
-                    // select the track, play the track
-                    axWindowsMediaPlayer1.URL = finalPath;
-                    axWindowsMediaPlayer1.Ctlcontrols.play();
                 }
                 else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
                 {
@@ -125,6 +117,14 @@ namespace JukeBox
                 }
             }
              readFile();            
+        }
+
+        private void playTrack()
+        {
+            axWindowsMediaPlayer1.Ctlcontrols.stop();
+            // select the track, play the track
+            axWindowsMediaPlayer1.URL = filename();
+            axWindowsMediaPlayer1.Ctlcontrols.play();
         }
 
         private void btnNextGenre_Click(object sender, EventArgs e)
@@ -153,28 +153,36 @@ namespace JukeBox
             }
         }
 
+        private string filename()
+        {
+            // combine the filename with the current directory, but up a few folders
+            // this gives the full path to the current track
+            string filename = txtCurrentTrack.Text;
+            string path = Environment.CurrentDirectory;
+            string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+            string finalPath = newPath + "Tracks\\" + filename;
+            return finalPath;
+        }
+
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            // if track has ended            
+            if (axWindowsMediaPlayer1.playState = st){
+
+            }
+
+    Timer timer1 = new Timer();
+            timer1.Enabled = true;
+            // if track has ended
             if (e.newState == 8)
             {
-                axWindowsMediaPlayer1.Ctlcontrols.stop();
-                //Plays the next track
-                System.Threading.Thread.Sleep(500);
+            
+                // put the next track into current track textbox
                 txtCurrentTrack.Text = lbxPlayList.Items[0].ToString();
                 lbxPlayList.Items.RemoveAt(0);
-                string filename = txtCurrentTrack.Text;
-                string path = Environment.CurrentDirectory;
-                string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
-                string finalPath = newPath + "Tracks\\" + filename;
-                
-
-                axWindowsMediaPlayer1.URL = finalPath;
-                string a = "hello";
-                
-
-                axWindowsMediaPlayer1.Ctlcontrols.play();
+                timer1.Enabled = false;
+                playTrack();
             }
         }
     }
 }
+
