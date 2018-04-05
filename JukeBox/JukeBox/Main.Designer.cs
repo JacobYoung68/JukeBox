@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.lblCopyright = new System.Windows.Forms.Label();
             this.txtGenreTitle = new System.Windows.Forms.TextBox();
@@ -40,6 +41,7 @@
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
             this.btnNextGenre = new System.Windows.Forms.Button();
             this.btnPreviousGenre = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
@@ -145,6 +147,10 @@
             this.btnPreviousGenre.UseVisualStyleBackColor = true;
             this.btnPreviousGenre.Click += new System.EventHandler(this.btnPreviousGenre_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -187,6 +193,7 @@
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
         private System.Windows.Forms.Button btnNextGenre;
         private System.Windows.Forms.Button btnPreviousGenre;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

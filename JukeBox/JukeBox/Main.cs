@@ -165,23 +165,24 @@ namespace JukeBox
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {
-            if (axWindowsMediaPlayer1.playState = st){
-
-            }
-
-    Timer timer1 = new Timer();
-            timer1.Enabled = true;
-            // if track has ended
+        {            
             if (e.newState == 8)
-            {
-            
-                // put the next track into current track textbox
-                txtCurrentTrack.Text = lbxPlayList.Items[0].ToString();
-                lbxPlayList.Items.RemoveAt(0);
-                timer1.Enabled = false;
-                playTrack();
+            {                
+                timer1.Enabled = true;
             }
+            
+            // if track has ended
+            // put the next track into current track textbox
+            
+            
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            txtCurrentTrack.Text = lbxPlayList.Items[0].ToString();
+            lbxPlayList.Items.RemoveAt(0);
+            playTrack();
+            timer1.Enabled = false;
         }
     }
 }
