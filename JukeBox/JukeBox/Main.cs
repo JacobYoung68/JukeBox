@@ -151,5 +151,14 @@ namespace JukeBox
                 readFile();
             }
         }
+
+        private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            // if track has ended
+            if (e.newState == 8)
+            {
+                //PLAY THE NEXT SONG YOU FAR slagggggg
+            }
+        }
     }
 }
