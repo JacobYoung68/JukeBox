@@ -72,7 +72,7 @@ namespace JukeBox
         }
 
         private void readFile()
-        {
+        {            
             // add file location to streamreader
             StreamReader sr = new StreamReader("../../Media.txt");
 
@@ -113,13 +113,14 @@ namespace JukeBox
                     string filename = txtCurrentTrack.Text;
                     string path = Environment.CurrentDirectory;                    
                     string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
-                    string finalPath = newPath + "Tracks/" + filename;                    
-                    
+                    string finalPath = newPath + "Tracks\\" + filename;
+                    // select the track, play the track
                     axWindowsMediaPlayer1.URL = finalPath;
                     axWindowsMediaPlayer1.Ctlcontrols.play();
                 }
                 else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
                 {
+                    // add to the playlist
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
             }
@@ -154,10 +155,25 @@ namespace JukeBox
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
         {
-            // if track has ended
+            // if track has ended            
             if (e.newState == 8)
             {
-                //PLAY THE NEXT SONG YOU FAR slagggggg
+                axWindowsMediaPlayer1.Ctlcontrols.stop();
+                //Plays the next track
+                System.Threading.Thread.Sleep(500);
+                txtCurrentTrack.Text = lbxPlayList.Items[0].ToString();
+                lbxPlayList.Items.RemoveAt(0);
+                string filename = txtCurrentTrack.Text;
+                string path = Environment.CurrentDirectory;
+                string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+                string finalPath = newPath + "Tracks\\" + filename;
+                
+
+                axWindowsMediaPlayer1.URL = finalPath;
+                string a = "hello";
+                
+
+                axWindowsMediaPlayer1.Ctlcontrols.play();
             }
         }
     }
