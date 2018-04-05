@@ -14,9 +14,8 @@ namespace JukeBox
     public partial class Main : Form
     {
         //Declare variables to store:
-        //Genre name, number of tracks, track name
-
-        //string[,] genre = new string[10,10];
+        
+        
 
         
         
@@ -62,15 +61,6 @@ namespace JukeBox
             
         }
 
-        //private void update()
-        //{
-        //    txtGenreTitle.Text = genre[currentGenre,0];
-        //    lbxGenreList.Items.Clear();
-        //    updateGenrelist();
-        //    //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
-        //
-        //}
-
         private void update(List<List<string>> genre)
         {
             txtGenreTitle.Text = genre[currentGenre][1].ToString();
@@ -91,8 +81,13 @@ namespace JukeBox
 
         private void readFile()
         {
+            // add file location to streamreader
             StreamReader sr = new StreamReader("../../Media.txt");
-            int genreNumber = Convert.ToInt32(sr.ReadLine());            
+
+            // read in the number of genres from the file
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            //List of lists to hold Genre name, number of tracks, track names with a new list for each genre 
             List<List<string>> genre = new List<List<string>>();
 
             for (int i = 0; i < genreNumber; i++)
@@ -117,10 +112,10 @@ namespace JukeBox
         {
             if (lbxGenreList.SelectedItem != null)
             {          
-                if (lbxPlayList.Items.Count == 0)
+                if (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text == "")
                 {
-                    lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());                    
-                } else if (lbxPlayList.Items.Count >= 1)
+                    txtCurrentTrack.Text = lbxGenreList.SelectedItem.ToString();
+                } else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
                 {
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
