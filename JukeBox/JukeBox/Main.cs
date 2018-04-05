@@ -13,20 +13,12 @@ namespace JukeBox
 {
     public partial class Main : Form
     {
-        //Declare variables to store:
-        
-        
-
-        
-        
+        //Declare variables to store:        
         //Current genre selected
         int currentGenre;
 
         //Current Track Playing  
-        int currentTrack;
-
-        //Enable reading from files
-        
+        int currentTrack;        
 
         public Main()
         {
@@ -115,9 +107,18 @@ namespace JukeBox
                 if (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text == "")
                 {
                     txtCurrentTrack.Text = lbxGenreList.SelectedItem.ToString();
-                   // string trackurl = "../../ Tracks/" + txtCurrentTrack.Text;
-                   // axWindowsMediaPlayer1.URL = @trackurl; // DOESNT WORK
-                } else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
+                    
+                    // combine the filename with the current directory, but up a few folders
+                    // this gives the full path to the current track
+                    string filename = txtCurrentTrack.Text;
+                    string path = Environment.CurrentDirectory;                    
+                    string newPath = Path.GetFullPath(Path.Combine(path, @"..\..\..\"));
+                    string finalPath = newPath + "Tracks/" + filename;                    
+                    
+                    axWindowsMediaPlayer1.URL = finalPath;
+                    axWindowsMediaPlayer1.Ctlcontrols.play();
+                }
+                else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
                 {
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
