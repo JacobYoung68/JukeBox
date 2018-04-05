@@ -133,7 +133,7 @@
             this.btnNextGenre.Name = "btnNextGenre";
             this.btnNextGenre.Size = new System.Drawing.Size(75, 23);
             this.btnNextGenre.TabIndex = 7;
-            this.btnNextGenre.Text = "Next Genre";
+            this.btnNextGenre.Text = "Next";
             this.btnNextGenre.UseVisualStyleBackColor = true;
             this.btnNextGenre.Click += new System.EventHandler(this.btnNextGenre_Click);
             // 
@@ -143,7 +143,7 @@
             this.btnPreviousGenre.Name = "btnPreviousGenre";
             this.btnPreviousGenre.Size = new System.Drawing.Size(75, 23);
             this.btnPreviousGenre.TabIndex = 8;
-            this.btnPreviousGenre.Text = "Previous Genre";
+            this.btnPreviousGenre.Text = "Previous";
             this.btnPreviousGenre.UseVisualStyleBackColor = true;
             this.btnPreviousGenre.Click += new System.EventHandler(this.btnPreviousGenre_Click);
             // 

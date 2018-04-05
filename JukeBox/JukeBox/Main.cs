@@ -15,10 +15,7 @@ namespace JukeBox
     {
         //Declare variables to store:        
         //Current genre selected
-        int currentGenre;
-
-        //Current Track Playing  
-        int currentTrack;        
+        int currentGenre;  
 
         public Main()
         {
@@ -45,7 +42,6 @@ namespace JukeBox
             // genre to 0 so it starts on the first
             // current track set to 1 because 0 is the name of the genre
             currentGenre = 0;
-            currentTrack = 1;
 
             //first read the file to setup the genre listbox
             readFile();
@@ -165,20 +161,17 @@ namespace JukeBox
         }
 
         private void axWindowsMediaPlayer1_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
-        {            
+        {
+            // if track has ended, enable timer
             if (e.newState == 8)
             {                
                 timer1.Enabled = true;
             }
-            
-            // if track has ended
-            // put the next track into current track textbox
-            
-            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            // when timer interval has ticked
             txtCurrentTrack.Text = lbxPlayList.Items[0].ToString();
             lbxPlayList.Items.RemoveAt(0);
             playTrack();
