@@ -38,6 +38,8 @@
             this.setupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.axWindowsMediaPlayer1 = new AxWMPLib.AxWindowsMediaPlayer();
+            this.btnNextGenre = new System.Windows.Forms.Button();
+            this.btnPreviousGenre = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axWindowsMediaPlayer1)).BeginInit();
             this.SuspendLayout();
@@ -122,6 +124,26 @@
             this.axWindowsMediaPlayer1.Size = new System.Drawing.Size(185, 47);
             this.axWindowsMediaPlayer1.TabIndex = 6;
             // 
+            // btnNextGenre
+            // 
+            this.btnNextGenre.Location = new System.Drawing.Point(246, 218);
+            this.btnNextGenre.Name = "btnNextGenre";
+            this.btnNextGenre.Size = new System.Drawing.Size(75, 23);
+            this.btnNextGenre.TabIndex = 7;
+            this.btnNextGenre.Text = "Next Genre";
+            this.btnNextGenre.UseVisualStyleBackColor = true;
+            this.btnNextGenre.Click += new System.EventHandler(this.btnNextGenre_Click);
+            // 
+            // btnPreviousGenre
+            // 
+            this.btnPreviousGenre.Location = new System.Drawing.Point(39, 218);
+            this.btnPreviousGenre.Name = "btnPreviousGenre";
+            this.btnPreviousGenre.Size = new System.Drawing.Size(75, 23);
+            this.btnPreviousGenre.TabIndex = 8;
+            this.btnPreviousGenre.Text = "Previous Genre";
+            this.btnPreviousGenre.UseVisualStyleBackColor = true;
+            this.btnPreviousGenre.Click += new System.EventHandler(this.btnPreviousGenre_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -130,6 +152,8 @@
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(358, 485);
+            this.Controls.Add(this.btnPreviousGenre);
+            this.Controls.Add(this.btnNextGenre);
             this.Controls.Add(this.axWindowsMediaPlayer1);
             this.Controls.Add(this.lbxPlayList);
             this.Controls.Add(this.txtCurrentTrack);
@@ -160,6 +184,8 @@
         private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private AxWMPLib.AxWindowsMediaPlayer axWindowsMediaPlayer1;
+        private System.Windows.Forms.Button btnNextGenre;
+        private System.Windows.Forms.Button btnPreviousGenre;
     }
 }
 

@@ -115,12 +115,40 @@ namespace JukeBox
                 if (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text == "")
                 {
                     txtCurrentTrack.Text = lbxGenreList.SelectedItem.ToString();
+                   // string trackurl = "../../ Tracks/" + txtCurrentTrack.Text;
+                   // axWindowsMediaPlayer1.URL = @trackurl; // DOESNT WORK
                 } else if (lbxPlayList.Items.Count > 0 || (lbxPlayList.Items.Count == 0 && txtCurrentTrack.Text != ""))
                 {
                     lbxPlayList.Items.Add(lbxGenreList.SelectedItem.ToString());
                 }
             }
              readFile();            
+        }
+
+        private void btnNextGenre_Click(object sender, EventArgs e)
+        {
+            // read in the number of genres from the file
+            StreamReader sr = new StreamReader("../../Media.txt");
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            if (currentGenre < genreNumber - 1)
+            {
+                currentGenre = currentGenre + 1;
+                readFile();
+            }            
+        }
+
+        private void btnPreviousGenre_Click(object sender, EventArgs e)
+        {
+            // read in the number of genres from the file
+            StreamReader sr = new StreamReader("../../Media.txt");
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            if (currentGenre > 0)
+            {
+                currentGenre = currentGenre - 1;
+                readFile();
+            }
         }
     }
 }
