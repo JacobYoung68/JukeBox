@@ -120,10 +120,9 @@ namespace JukeBox
             // read in the number of genres from the file
             StreamReader sr = new StreamReader("../../Media.txt");
             int genreNumber = Convert.ToInt32(sr.ReadLine());
-
             if (currentGenre < genreNumber - 1)
             {
-                currentGenre = currentGenre + 1;
+                currentGenre++;
                 readFile();
             }            
         }
@@ -133,10 +132,9 @@ namespace JukeBox
             // read in the number of genres from the file
             StreamReader sr = new StreamReader("../../Media.txt");
             int genreNumber = Convert.ToInt32(sr.ReadLine());
-
             if (currentGenre > 0)
             {
-                currentGenre = currentGenre - 1;
+                currentGenre--;
                 readFile();
             }
         }

@@ -265,7 +265,7 @@ namespace JukeBox
 
         
 
-        private void readFile()
+        private List<List<string>> readFile()
         {
             // add file location to streamreader
             StreamReader sr = new StreamReader("../../Media.txt");
@@ -288,11 +288,12 @@ namespace JukeBox
                 }
                 genre.Add(newgenre);
             }
-            update(genre);
+            return(genre);
         }
 
-        private void update(List<List<string>> genre)
+        private void update()
         {
+            List<List<string>> genre = readFile();
             tbxGenreTitle.Text = genre[currentGenre][1].ToString();
             lbxGenreTrackList.Items.Clear();
             updateGenrelist(genre);
@@ -310,7 +311,7 @@ namespace JukeBox
 
         private void Setup_Load(object sender, EventArgs e)
         {
-            readFile();
+            update();
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
@@ -322,7 +323,7 @@ namespace JukeBox
             if (currentGenre > 0)
             {
                 currentGenre = currentGenre - 1;
-                readFile();
+                update();
             }
         }
 
@@ -335,7 +336,7 @@ namespace JukeBox
             if (currentGenre < genreNumber - 1)
             {
                 currentGenre = currentGenre + 1;
-                readFile();
+                update();
             }
         }
 
