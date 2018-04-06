@@ -342,6 +342,13 @@ namespace JukeBox
         private void btnImport_Click(object sender, EventArgs e)
         {
             // IMPORT TRACKS
+            OpenFileDialog newDialogue = new OpenFileDialog();
+            newDialogue.Title = "Import Track";
+            newDialogue.Filter = "Music files (*.mp3, *.wma) | *.mp3; *.wma";            
+            if (newDialogue.ShowDialog() == DialogResult.OK)
+            {
+                lbxImportedTracks.Items.Add(newDialogue.SafeFileName.ToString());
+            }
         }
 
         private void btnClearImport_Click(object sender, EventArgs e)
