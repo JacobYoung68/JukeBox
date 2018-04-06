@@ -150,6 +150,7 @@ namespace JukeBox
             this.btnDelete.TabIndex = 8;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // btnNext
             // 
@@ -169,6 +170,7 @@ namespace JukeBox
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnPrevious
             // 
@@ -379,6 +381,15 @@ namespace JukeBox
             }
         }
 
-        
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            List<List<string>> genre = readFile();
+
+        }
     }
 }
