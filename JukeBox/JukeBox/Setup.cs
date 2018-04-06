@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace JukeBox
 {
@@ -30,6 +31,8 @@ namespace JukeBox
         private ListBox lbxImportedTracks;
         private Button btnImport;
         private Button btnCancel;
+
+        int currentGenre = 0;
 
         public Setup()
         {
@@ -155,6 +158,7 @@ namespace JukeBox
             this.btnNext.TabIndex = 8;
             this.btnNext.Text = "Next >>";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnAdd
             // 
@@ -173,6 +177,7 @@ namespace JukeBox
             this.btnPrevious.TabIndex = 7;
             this.btnPrevious.Text = "<< Previous";
             this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // lbxGenreTrackList
             // 
@@ -246,6 +251,7 @@ namespace JukeBox
             this.Controls.Add(this.btnOkay);
             this.Name = "Setup";
             this.Text = "Setup";
+            this.Load += new System.EventHandler(this.Setup_Load);
             this.gbxMain.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
@@ -266,6 +272,80 @@ namespace JukeBox
             if (result == System.Windows.Forms.DialogResult.Yes)
             {
                 this.Close();
+            }
+        }
+
+        private void readFile()
+        {
+            // add file location to streamreader
+            StreamReader sr = new StreamReader("../../Media.txt");
+
+            // read in the number of genres from the file
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            //List of lists to hold Genre name, number of tracks, track names with a new list for each genre 
+            List<List<string>> genre = new List<List<string>>();
+
+            for (int i = 0; i < genreNumber; i++)
+            {
+                List<string> newgenre = new List<string>();
+                int trackNumber = Convert.ToInt32(sr.ReadLine());
+                newgenre.Add((trackNumber.ToString()));
+                newgenre.Add(sr.ReadLine());
+                for (int f = 0; f < trackNumber; f++)
+                {
+                    newgenre.Add(sr.ReadLine());
+                }
+                genre.Add(newgenre);
+            }
+            update(genre);
+        }
+
+        private void update(List<List<string>> genre)
+        {
+            tbxGenreTitle.Text = genre[currentGenre][1].ToString();
+            lbxGenreTrackList.Items.Clear();
+            updateGenrelist(genre);
+            //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
+        }
+
+        private void updateGenrelist(List<List<string>> genre)
+        {
+            int max = Convert.ToInt32(genre[currentGenre][0]);
+            for (int i = 0; i < max; i++)
+            {
+                lbxGenreTrackList.Items.Add(genre[currentGenre][i + 2]);
+            }
+        }
+
+        private void Setup_Load(object sender, EventArgs e)
+        {
+            readFile();
+        }
+
+        private void btnPrevious_Click(object sender, EventArgs e)
+        {
+            // read in the number of genres from the file
+            StreamReader sr = new StreamReader("../../Media.txt");
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            if (currentGenre > 0)
+            {
+                currentGenre = currentGenre - 1;
+                readFile();
+            }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            // read in the number of genres from the file
+            StreamReader sr = new StreamReader("../../Media.txt");
+            int genreNumber = Convert.ToInt32(sr.ReadLine());
+
+            if (currentGenre < genreNumber - 1)
+            {
+                currentGenre = currentGenre + 1;
+                readFile();
             }
         }
     }

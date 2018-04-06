@@ -12,10 +12,9 @@ using System.IO;
 namespace JukeBox
 {
     public partial class Main : Form
-    {
-        //Declare variables to store:        
+    {       
         //Current genre selected
-        int currentGenre;  
+        int currentGenre = 0;  
 
         public Main()
         {
@@ -37,16 +36,9 @@ namespace JukeBox
         }
 
         private void Main_Load(object sender, EventArgs e)
-        {
-            // set values for current genre and track
-            // genre to 0 so it starts on the first
-            // current track set to 1 because 0 is the name of the genre
-            currentGenre = 0;
-
+        {           
             //first read the file to setup the genre listbox
-            readFile();
-
-            
+            readFile();            
         }
 
         private void update(List<List<string>> genre)
