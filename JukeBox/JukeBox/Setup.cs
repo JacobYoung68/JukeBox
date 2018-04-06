@@ -72,6 +72,7 @@ namespace JukeBox
             this.btnOkay.TabIndex = 0;
             this.btnOkay.Text = "OK";
             this.btnOkay.UseVisualStyleBackColor = true;
+            this.btnOkay.Click += new System.EventHandler(this.btnOkay_Click);
             // 
             // btnCancel
             // 
@@ -225,6 +226,7 @@ namespace JukeBox
             this.btnClearImport.TabIndex = 8;
             this.btnClearImport.Text = "Clear Import Tracks";
             this.btnClearImport.UseVisualStyleBackColor = true;
+            this.btnClearImport.Click += new System.EventHandler(this.btnClearImport_Click);
             // 
             // lbxImportedTracks
             // 
@@ -242,6 +244,7 @@ namespace JukeBox
             this.btnImport.TabIndex = 7;
             this.btnImport.Text = "Import Tracks From Directory";
             this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
             // 
             // Setup
             // 
@@ -260,20 +263,7 @@ namespace JukeBox
 
         }
 
-        private void btnCancel_Click(object sender, EventArgs e)
-        {
-            // set the variables for the messagebox options 
-            string message = "Are you sure you want to cancel?";
-            string error = "error";
-            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
-            DialogResult result;
-
-            result = MessageBox.Show(message, error, buttons);
-            if (result == System.Windows.Forms.DialogResult.Yes)
-            {
-                this.Close();
-            }
-        }
+        
 
         private void readFile()
         {
@@ -348,5 +338,39 @@ namespace JukeBox
                 readFile();
             }
         }
+
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+            // IMPORT TRACKS
+        }
+
+        private void btnClearImport_Click(object sender, EventArgs e)
+        {
+            lbxImportedTracks.Items.Clear();
+        }
+
+        private void btnOkay_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            // set the variables for the messagebox options 
+            // ask if the user wants to close the form without saving changes
+            string message = "Are you sure you want to cancel?";
+            string error = "error";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            // close the form without passing back variables 
+            result = MessageBox.Show(message, error, buttons);
+            if (result == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        
     }
 }
