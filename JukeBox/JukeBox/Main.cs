@@ -65,7 +65,7 @@ namespace JukeBox
         {
             // add file location to streamreader
             StreamReader sr = new StreamReader("../../Media.txt");
-
+            
             // read in the number of genres from the file
             int genreNumber = Convert.ToInt32(sr.ReadLine());
 

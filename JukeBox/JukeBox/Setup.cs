@@ -290,13 +290,13 @@ namespace JukeBox
                 }
                 genre.Add(newgenre);
             }
-            return(genre);
+            return (genre);
         }
 
         private void update()
         {
             List<List<string>> genre = readFile();
-            tbxGenreTitle.Text = genre[currentGenre][1].ToString();
+            tbxGenreTitle.Text = genre[currentGenre][1].ToString();            
             lbxGenreTrackList.Items.Clear();
             updateGenrelist(genre);
             //txtCurrentTrack.Text = genre[currentGenre, currentTrack + 1];
@@ -321,7 +321,6 @@ namespace JukeBox
             // read in the number of genres from the file
             StreamReader sr = new StreamReader("../../Media.txt");
             int genreNumber = Convert.ToInt32(sr.ReadLine());
-
             if (currentGenre > 0)
             {
                 currentGenre = currentGenre - 1;
@@ -334,7 +333,6 @@ namespace JukeBox
             // read in the number of genres from the file
             StreamReader sr = new StreamReader("../../Media.txt");
             int genreNumber = Convert.ToInt32(sr.ReadLine());
-
             if (currentGenre < genreNumber - 1)
             {
                 currentGenre = currentGenre + 1;
@@ -383,13 +381,14 @@ namespace JukeBox
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-
+            // I have tried everything I could think of using streamwriter
+            // tried disposing and closing after all uses of streamreader
+            // always got the error that it was being used in another process
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            List<List<string>> genre = readFile();
-
+            // see button add
         }
     }
 }
